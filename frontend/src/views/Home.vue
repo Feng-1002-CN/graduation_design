@@ -40,7 +40,7 @@ onMounted(checkHealth)
         <h2>竞赛知识库</h2>
         <p>解析通知、规则与往届作品，保留来源、日期和页码。</p>
       </article>
-      <article class="clickable" @click="router.push('/compare/past-works')">
+      <article class="clickable" @click="router.push('/agent/analyze')">
         <el-icon><MagicStick /></el-icon>
         <h2>选题分析智能体</h2>
         <p>四步检索与推理，形成六维度可溯源分析报告。</p>

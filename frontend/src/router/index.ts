@@ -33,6 +33,11 @@ const router = createRouter({
       name: 'past-works',
       component: () => import('@/views/compare/CompareWorks.vue'),
     },
+    {
+      path: '/agent/analyze',
+      name: 'agent-analyze',
+      component: () => import('@/views/agent/Analyze.vue'),
+    },
   ],
 })
 
