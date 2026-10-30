@@ -8,6 +8,15 @@ spring:
     hibernate:
       ddl-auto: create-drop
 
+app:
+  storage:
+    provider: filesystem
+    local-directory: ${LOCAL_STORAGE_DIRECTORY:./target/local-storage}
+  embedding:
+    provider: local
+  vector:
+    provider: database
+
 logging:
   level:
     com.graduation.competition: DEBUG
