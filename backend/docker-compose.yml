@@ -2,6 +2,7 @@ name: competition-assistant
 
 services:
   backend:
+    profiles: ["full"]
     build:
       context: .
       dockerfile: Dockerfile

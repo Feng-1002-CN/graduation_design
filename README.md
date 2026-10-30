@@ -24,6 +24,8 @@
 docker compose -f backend/docker-compose.yml up -d
 ```
 
+该命令默认只启动 PostgreSQL、Redis、MinIO 与 Milvus，不要求预先打包后端。
+
 ### 2. 后端
 
 ```powershell
@@ -39,6 +41,16 @@ mvn spring-boot:run
 
 后端默认地址为 `http://localhost:8080`，Swagger 地址为
 `http://localhost:8080/swagger-ui.html`。
+
+使用 `local` profile 时，数据库使用 H2，文件使用本地目录，向量检索使用数据库余弦
+降级，Embedding 使用确定性本地实现，未配置 TTS 时使用本地演示音轨。生产模式默认连接
+PostgreSQL、MinIO、Milvus 与远端 Embedding/LLM/TTS 服务。
+
+也可以使用 Docker 多阶段构建一次启动完整系统：
+
+```powershell
+docker compose -f backend/docker-compose.yml --profile full up -d --build
+```
 
 ### 3. 前端
 
@@ -60,8 +72,19 @@ cd ..\frontend
 npm run build
 ```
 
+本机未安装 FFmpeg 时，真实 MP4 集成测试会明确跳过；安装 FFmpeg 后可完整验证视频流
+与音频流。Docker 运行镜像已内置 FFmpeg。
+
 ## 配置
 
 数据库、Redis、MinIO、Milvus、Embedding、LLM、TTS 与 FFmpeg 地址均通过环境变量覆盖，默认值见
 `backend/src/main/resources/application.yml`。模型与 TTS 未配置时会返回明确的不可用状态，核心知识检索仍可使用本地向量降级存储。
+
+常用的生产配置包括：
+
+- `AI_BASE_URL`、`AI_API_KEY`、`AI_MODEL`：OpenAI 兼容模型。
+- `EMBEDDING_BASE_URL`、`EMBEDDING_API_KEY`、`EMBEDDING_MODEL`：BGE/M3E 向量服务。
+- `TTS_BASE_URL`、`TTS_API_KEY`、`TTS_VOICE`：TTS 服务。
+- `FFMPEG_EXECUTABLE`：FFmpeg 可执行文件路径。
+- `VECTOR_PROVIDER=milvus` 或 `database`，`EMBEDDING_PROVIDER=remote` 或 `local`。
 
