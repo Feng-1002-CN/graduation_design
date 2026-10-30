@@ -43,6 +43,11 @@ const router = createRouter({
       name: 'plans',
       component: () => import('@/views/plan/PlanView.vue'),
     },
+    {
+      path: '/ppt',
+      name: 'ppt',
+      component: () => import('@/views/ppt/PptGenerate.vue'),
+    },
   ],
 })
 
