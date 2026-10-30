@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue'
 import { Connection, Document, MagicStick, Monitor } from '@element-plus/icons-vue'
+import { useRouter } from 'vue-router'
 
 import { getHealth, type HealthData } from '@/api/system'
 
 const health = ref<HealthData>()
 const loading = ref(false)
+const router = useRouter()
 const online = computed(() => health.value?.status === 'UP')
 
 async function checkHealth() {
@@ -33,7 +35,7 @@ onMounted(checkHealth)
     </header>
 
     <section class="feature-grid">
-      <article>
+      <article class="clickable" @click="router.push('/competitions')">
         <el-icon><Document /></el-icon>
         <h2>竞赛知识库</h2>
         <p>解析通知、规则与往届作品，保留来源、日期和页码。</p>
