@@ -1,0 +1,26 @@
+# Java
+backend/target/
+*.class
+*.log
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Local runtime
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+.env
+data/
+uploads/
+*.h2.db
+*.mv.db
+
+# Generated content and test output
+test-output/
+playwright-report/
+

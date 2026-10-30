@@ -1,0 +1,87 @@
+server:
+  port: ${SERVER_PORT:8080}
+
+spring:
+  application:
+    name: competition-assistant
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/competition}
+    username: ${DB_USERNAME:competition}
+    password: ${DB_PASSWORD:competition}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      repositories:
+        enabled: false
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 55MB
+  jackson:
+    default-property-inclusion: non_null
+    time-zone: UTC
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /v3/api-docs
+
+app:
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:5173}
+  storage:
+    endpoint: ${MINIO_ENDPOINT:http://localhost:9000}
+    access-key: ${MINIO_ACCESS_KEY:minioadmin}
+    secret-key: ${MINIO_SECRET_KEY:minioadmin}
+    bucket: ${MINIO_BUCKET:competition-files}
+  embedding:
+    base-url: ${EMBEDDING_BASE_URL:http://localhost:8000}
+    path: ${EMBEDDING_PATH:/v1/embeddings}
+    api-key: ${EMBEDDING_API_KEY:}
+    model: ${EMBEDDING_MODEL:bge-m3}
+    dimensions: ${EMBEDDING_DIMENSIONS:1024}
+  milvus:
+    base-url: ${MILVUS_BASE_URL:http://localhost:19530}
+    database: ${MILVUS_DATABASE:default}
+    collection: ${MILVUS_COLLECTION:competition_knowledge}
+    token: ${MILVUS_TOKEN:}
+  ai:
+    base-url: ${AI_BASE_URL:http://localhost:8000/v1}
+    api-key: ${AI_API_KEY:}
+    model: ${AI_MODEL:qwen-plus}
+    temperature: ${AI_TEMPERATURE:0.2}
+  tts:
+    base-url: ${TTS_BASE_URL:}
+    api-key: ${TTS_API_KEY:}
+    voice: ${TTS_VOICE:zh-CN-XiaoxiaoNeural}
+  ffmpeg:
+    executable: ${FFMPEG_EXECUTABLE:ffmpeg}
+  async:
+    core-pool-size: ${ASYNC_CORE_POOL_SIZE:4}
+    max-pool-size: ${ASYNC_MAX_POOL_SIZE:8}
+    queue-capacity: ${ASYNC_QUEUE_CAPACITY:100}
+
+logging:
+  level:
+    root: INFO
+    com.graduation.competition: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd'T'HH:mm:ss.SSSXXX} %-5level [%thread] %logger{36} - %msg%n"
+
