@@ -53,6 +53,11 @@ const router = createRouter({
       name: 'video',
       component: () => import('@/views/video/VideoGenerate.vue'),
     },
+    {
+      path: '/apply/check',
+      name: 'apply-check',
+      component: () => import('@/views/apply/ApplyCheck.vue'),
+    },
   ],
 })
 
