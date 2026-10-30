@@ -14,6 +14,7 @@ public enum ErrorCode {
     STORAGE_UNAVAILABLE(50001, "文件存储服务不可用"),
     VECTOR_STORE_UNAVAILABLE(50002, "向量库服务不可用"),
     MODEL_UNAVAILABLE(50003, "AI 模型服务不可用"),
+    SERVICE_UNAVAILABLE(50004, "外部服务不可用"),
     INTERNAL_ERROR(50000, "服务内部错误");
 
     private final int code;

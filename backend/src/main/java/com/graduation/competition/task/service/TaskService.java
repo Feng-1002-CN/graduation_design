@@ -33,6 +33,20 @@ public class TaskService {
         return taskRepository.saveAndFlush(task);
     }
 
+    @Transactional
+    public GenerationTask createVideoTask(Long projectId) {
+        if (!projectRepository.existsById(projectId)) {
+            throw new BizException(ErrorCode.RESOURCE_NOT_FOUND, "项目不存在");
+        }
+        GenerationTask task = new GenerationTask();
+        task.setProjectId(projectId);
+        task.setTaskType("VIDEO");
+        task.setStatus("PENDING");
+        task.setStage("QUEUED");
+        task.setProgress(0);
+        return taskRepository.saveAndFlush(task);
+    }
+
     @Transactional(readOnly = true)
     public TaskResponse get(Long taskId) {
         return TaskResponse.from(requireTask(taskId));

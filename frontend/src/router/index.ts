@@ -48,6 +48,11 @@ const router = createRouter({
       name: 'ppt',
       component: () => import('@/views/ppt/PptGenerate.vue'),
     },
+    {
+      path: '/video',
+      name: 'video',
+      component: () => import('@/views/video/VideoGenerate.vue'),
+    },
   ],
 })
 
