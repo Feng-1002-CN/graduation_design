@@ -58,6 +58,16 @@ const router = createRouter({
       name: 'apply-check',
       component: () => import('@/views/apply/ApplyCheck.vue'),
     },
+    {
+      path: '/workbench/projects',
+      name: 'workbench-projects',
+      component: () => import('@/views/workbench/ProjectList.vue'),
+    },
+    {
+      path: '/workbench/projects/:projectId',
+      name: 'workbench-project',
+      component: () => import('@/views/workbench/Workbench.vue'),
+    },
   ],
 })
 
