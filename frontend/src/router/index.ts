@@ -38,6 +38,11 @@ const router = createRouter({
       name: 'agent-analyze',
       component: () => import('@/views/agent/Analyze.vue'),
     },
+    {
+      path: '/plans',
+      name: 'plans',
+      component: () => import('@/views/plan/PlanView.vue'),
+    },
   ],
 })
 
