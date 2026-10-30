@@ -23,6 +23,11 @@ const router = createRouter({
       name: 'rule-qa',
       component: () => import('@/views/rule/RuleQa.vue'),
     },
+    {
+      path: '/search/recommend',
+      name: 'recommend',
+      component: () => import('@/views/search/Recommend.vue'),
+    },
   ],
 })
 
