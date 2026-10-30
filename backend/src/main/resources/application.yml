@@ -75,6 +75,8 @@ app:
     temperature: ${AI_TEMPERATURE:0.2}
   qa:
     min-score: ${QA_MIN_SCORE:0.15}
+  compare:
+    min-score: ${COMPARE_MIN_SCORE:0.15}
   tts:
     base-url: ${TTS_BASE_URL:}
     api-key: ${TTS_API_KEY:}

@@ -28,6 +28,11 @@ const router = createRouter({
       name: 'recommend',
       component: () => import('@/views/search/Recommend.vue'),
     },
+    {
+      path: '/compare/past-works',
+      name: 'past-works',
+      component: () => import('@/views/compare/CompareWorks.vue'),
+    },
   ],
 })
 
