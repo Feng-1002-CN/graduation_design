@@ -68,10 +68,13 @@ app:
     collection: ${MILVUS_COLLECTION:competition_knowledge}
     token: ${MILVUS_TOKEN:}
   ai:
+    provider: ${AI_PROVIDER:openai}
     base-url: ${AI_BASE_URL:http://localhost:8000/v1}
     api-key: ${AI_API_KEY:}
     model: ${AI_MODEL:qwen-plus}
     temperature: ${AI_TEMPERATURE:0.2}
+  qa:
+    min-score: ${QA_MIN_SCORE:0.15}
   tts:
     base-url: ${TTS_BASE_URL:}
     api-key: ${TTS_API_KEY:}

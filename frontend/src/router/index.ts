@@ -18,6 +18,11 @@ const router = createRouter({
       name: 'knowledge',
       component: () => import('@/views/knowledge/KnowledgeBase.vue'),
     },
+    {
+      path: '/rules/qa',
+      name: 'rule-qa',
+      component: () => import('@/views/rule/RuleQa.vue'),
+    },
   ],
 })
 

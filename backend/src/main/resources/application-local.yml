@@ -16,6 +16,8 @@ app:
     provider: local
   vector:
     provider: database
+  ai:
+    provider: extractive
 
 logging:
   level:
